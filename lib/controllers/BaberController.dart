@@ -10,7 +10,7 @@ class BarberController {
     if (_key.currentState!.validate()) {
       //Agregar a la lista del provider
       provider.addBarber(barber);
-      Navigator.pushNamed(context, 'barbersManagement');
+      Navigator.pushNamed(context, 'login');
     }
   }
 
@@ -18,7 +18,7 @@ class BarberController {
       BarberProvider provider) {
     if (_key.currentState!.validate()) {
       provider.updateBarber(barber);
-      Navigator.pushNamed(context, 'barbersManagement');
+      Navigator.pushNamed(context, 'landingBarber');
     }
   }
 

@@ -55,7 +55,11 @@ class LoginPage extends StatelessWidget {
               ),
               const TextButton(
                 onPressed: null,
-                child: Text("Registrarme"),
+                child: Text("Registrarme como cliente"),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pushNamed(context, 'barberRegister'),
+                child: Text("Registrarme como barbero"),
               )
             ],
           ),

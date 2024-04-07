@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:vipbarb/controllers/BarberProvider.dart';
 import 'package:vipbarb/views/BarbersManagement.dart';
 import 'package:vipbarb/views/LandingAdminPage.dart';
+import 'package:vipbarb/views/LandingBarber.dart';
 import 'package:vipbarb/views/LoginPage.dart';
 import 'package:vipbarb/views/BarberRegisterPage.dart';
 import 'package:vipbarb/views/BarberUpdatePage.dart';
@@ -31,6 +32,7 @@ class HomePage extends StatelessWidget {
         'barberRegister': (context) => BaberRegisterPage(),
         'barbersManagement': (context) => BarberManagementPage(),
         'barberUpdate': (context) => BaberUpdatePage(),
+        'landingBarber': (context) => LandingBarber(),
       },
     );
   }

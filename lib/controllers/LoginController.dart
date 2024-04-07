@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vipbarb/controllers/BarberProvider.dart';
+import 'package:vipbarb/models/barber.dart';
 
 class LoginController {
   GlobalKey<FormState> key;
@@ -15,10 +18,30 @@ class LoginController {
 
   void login(String email, String password) {
     if (!key.currentState!.validate()) return;
-    // Simular Logica para validar el usuario
-    if (email == "saurmo" && password == "admin123") {
-      // Lo enviamos a usuariosPage
+
+    // Obtén la lista de barberos
+    List<Barber> barbers =
+        Provider.of<BarberProvider>(context, listen: false).barbers;
+
+    // Verifica si el correo electrónico y la contraseña proporcionados coinciden con algún barbero en la lista
+    Barber? barber = barbers.firstWhere(
+      (barber) => barber.email == email && barber.contrasena == password,
+      orElse: () => Barber.empty(),
+    );
+    // Si el barbero existe, permite el acceso como barbero
+    if (barber.email != '') {
+      Provider.of<BarberProvider>(context, listen: false)
+          .setCurrentBarber(barber);
+
+      /// barbero logeado
+      Navigator.popAndPushNamed(context, "landingBarber");
+    } else if (email == "saurmo" && password == "admin123") {
+      // Si el correo electrónico y la contraseña son del administrador, permite el acceso como administrador
       Navigator.popAndPushNamed(context, "landingAdmin");
+    } else {
+      // Si no se encontró el barbero y las credenciales no son del administrador, muestra un mensaje de error
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Correo electrónico o contraseña incorrectos')));
     }
   }
 }
