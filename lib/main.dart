@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vipbarb/controllers/BarberProvider.dart';
+import 'package:vipbarb/views/BarbersManagement.dart';
 import 'package:vipbarb/views/LandingAdminPage.dart';
 import 'package:vipbarb/views/LoginPage.dart';
 import 'package:vipbarb/views/BarberRegisterPage.dart';
+import 'package:vipbarb/views/BarberUpdatePage.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -27,6 +29,8 @@ class HomePage extends StatelessWidget {
         'login': (context) => LoginPage(),
         'landingAdmin': (context) => LandingAdminPage(),
         'barberRegister': (context) => BaberRegisterPage(),
+        'barbersManagement': (context) => BarberManagementPage(),
+        'barberUpdate': (context) => BaberUpdatePage(),
       },
     );
   }

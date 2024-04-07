@@ -32,9 +32,9 @@ class _LandingAdminPageState extends State<LandingAdminPage> {
               ),
             ),
             ListTile(
-              title: Text('Gestión de barberos'),
+              title: Text('Gestionar barberos'),
               onTap: () {
-                Navigator.pushNamed(context, 'barberRegister');
+                Navigator.pushNamed(context, 'barbersManagement');
               },
             ),
             ListTile(

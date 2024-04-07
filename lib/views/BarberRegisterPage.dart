@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vipbarb/controllers/BaberRegisterController.dart';
+import 'package:vipbarb/controllers/BaberController.dart';
 import 'package:vipbarb/controllers/BarberProvider.dart';
 import 'package:vipbarb/models/barber.dart';
 
@@ -13,7 +13,7 @@ class BaberRegisterPage extends StatefulWidget {
 
 class _BaberRegisterPageState extends State<BaberRegisterPage> {
   final GlobalKey<FormState> _key = GlobalKey();
-  BarberRegisterController _con = BarberRegisterController();
+  BarberController _con = BarberController();
   Barber barber = Barber.empty(); // barbero que se va a crear
   TextEditingController _passwordController = TextEditingController();
 
