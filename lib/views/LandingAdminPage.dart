@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vipbarb/controllers/BarberProvider.dart';
+import 'package:vipbarb/models/barber.dart';
 
 class LandingAdminPage extends StatefulWidget {
   @override
@@ -31,7 +34,7 @@ class _LandingAdminPageState extends State<LandingAdminPage> {
             ListTile(
               title: Text('Gestión de barberos'),
               onTap: () {
-                // Lógica para la opción 1
+                Navigator.pushNamed(context, 'barberRegister');
               },
             ),
             ListTile(
@@ -45,8 +48,22 @@ class _LandingAdminPageState extends State<LandingAdminPage> {
         ),
       ),
       body: Center(
-        child: Text('Contenido de la página'),
+        child: Consumer<BarberProvider>(builder: (_, barberProvider, child) {
+          List<Barber> barbers = barberProvider.barbers;
+          return barberWidget(barbers, barberProvider);
+        }),
       ),
     );
+  }
+
+  ListView barberWidget(List<Barber> barbers, BarberProvider barberProvider) {
+    return ListView.builder(
+        itemCount: barbers.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(barberProvider.barbers[index].name),
+            subtitle: Text(barberProvider.barbers[index].phone),
+          );
+        });
   }
 }

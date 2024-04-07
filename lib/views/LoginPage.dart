@@ -4,26 +4,26 @@ import 'package:vipbarb/controllers/LoginController.dart';
 class LoginPage extends StatelessWidget {
   String email = "";
   String password = "";
-  GlobalKey<FormState> key = GlobalKey();
   late LoginController _controller;
 
   @override
   Widget build(BuildContext context) {
-    _controller = LoginController(key: key, context: context);
     return Scaffold(
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            createForm(),
+            createForm(context),
           ],
         ),
       ),
     );
   }
 
-  Form createForm() {
+  Form createForm(context) {
+    GlobalKey<FormState> key = GlobalKey();
+    _controller = LoginController(key: key, context: context);
     return Form(
       key: key,
       child: SingleChildScrollView(
